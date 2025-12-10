@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eva Tschanz - Sponsorship Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+        :root {
+            --swiss-red: #D80000;
+            --dark-bg: #111111;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #2b2b2b;
+            color: white;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        h1, h2, h3, h4, .font-oswald {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* A4 Paper Dimensions for Screen */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--dark-bg);
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Editable Highlight */
+        [contenteditable="true"]:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            outline: 1px dashed #666;
+            cursor: text;
+        }
+
+        /* Image Placeholder Styling */
+        .img-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: #888;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #555;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: none;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                height: 100vh; /* Force full height */
+            }
+            .no-print {
+                display: none !important;
+            }
+            /* Ensure background colors print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toolbar -->
+    <div class="no-print fixed top-0 left-0 w-full bg-black/90 p-4 z-50 flex justify-between items-center text-white border-b border-gray-700">
+        <div class="text-sm">
+            <span class="font-bold text-red-500">INSTRUCTIONS:</span>
+            1. Save this file to the folder containing your images. 
+            2. Click any text to edit. 
+            3. Click 'Save as PDF' to finish.
+        </div>
+        <button onclick="window.print()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition flex items-center gap-2">
+            <i class="fas fa-file-pdf"></i> Save as PDF
+        </button>
+    </div>
+
+    <div class="h-20 no-print"></div> <!-- Spacer for toolbar -->
+
+    <!-- PAGE 1: COVER -->
+    <div class="page relative">
+        <!-- Background Image Container -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/eva951.jpg" alt="Eva Kick" class="w-full h-full object-cover opacity-60" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="img-placeholder w-full h-full hidden">
+                <i class="fas fa-image text-4xl mb-2"></i>
+                <span>Image not found: images/eva951.jpg</span>
+                <span class="text-xs mt-1">(Save HTML in same folder as images)</span>
+            </div>
+        </div>
+
+        <!-- Content Overlay -->
+        <div class="relative z-10 flex flex-col justify-end h-full p-16 bg-gradient-to-t from-black via-transparent to-transparent">
+            <div class="border-l-8 border-[color:var(--swiss-red)] pl-8 mb-10">
+                <h1 contenteditable="true" class="text-8xl font-bold uppercase tracking-tighter leading-none mb-2">
+                    Eva<br>Tschanz
+                </h1>
+                <h2 contenteditable="true" class="text-3xl font-light uppercase tracking-widest text-gray-300">
+                    Swiss & European Champion
+                </h2>
+            </div>
+            
+            <div class="flex justify-between items-end border-t border-gray-600 pt-6">
+                <p contenteditable="true" class="text-xl italic font-serif text-gray-400 max-w-md">
+                    "Unbreakable Determination. The Future of Kickboxing."
+                </p>
+                <p contenteditable="true" class="text-sm font-bold tracking-widest text-[color:var(--swiss-red)]">
+                    SPONSORSHIP DOSSIER 2025/2026
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: PROFILE -->
+    <div class="page p-12 flex flex-col">
+        <!-- Header -->
+        <div class="flex items-center gap-4 mb-12">
+            <div class="h-1 w-20 bg-[color:var(--swiss-red)]"></div>
+            <h2 contenteditable="true" class="text-4xl font-bold uppercase tracking-wide">The Fighter</h2>
+        </div>
+
+        <div class="flex flex-1 gap-12">
+            <!-- Left Column: Bio -->
+            <div class="w-1/2 flex flex-col gap-6">
+                <p contenteditable="true" class="text-lg leading-relaxed text-gray-300">
+                    I am Eva Tschanz, 17 years old, fighting out of Bern. Often the only girl in the training room, I learned early on that respect is earned through sweat, discipline, and courage.
+                </p>
+                <p contenteditable="true" class="text-lg leading-relaxed text-gray-300">
+                    Fighting for the <strong>Fusion Sports Academy</strong>, I have risen through the ranks from a promising junior to a dominant force on the national stage. My journey isn't just about winning fights; it's about breaking barriers and showing that with enough heart, no goal is out of reach.
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="bg-gray-800 p-4 border-l-4 border-gray-600">
+                        <span class="block text-xs uppercase text-gray-500">Born</span>
+                        <span contenteditable="true" class="text-xl font-bold">2008 (Age 17)</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 border-l-4 border-gray-600">
+                        <span class="block text-xs uppercase text-gray-500">Location</span>
+                        <span contenteditable="true" class="text-xl font-bold">Bern, Switzerland</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 border-l-4 border-gray-600">
+                        <span class="block text-xs uppercase text-gray-500">Style</span>
+                        <span contenteditable="true" class="text-xl font-bold">K1 & Kick Light</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 border-l-4 border-[color:var(--swiss-red)]">
+                        <span class="block text-xs uppercase text-gray-500">Team</span>
+                        <span contenteditable="true" class="text-xl font-bold">Swiss National Team</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Image -->
+            <div class="w-1/2 relative h-[80%]">
+                <div class="absolute inset-0 border-2 border-[color:var(--swiss-red)] translate-x-4 translate-y-4"></div>
+                <div class="w-full h-full relative z-10 bg-gray-900 overflow-hidden">
+                    <img src="images/IMG_2291.JPG" alt="Wrapping Hands" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder w-full h-full hidden">
+                        <i class="fas fa-camera text-3xl mb-2"></i>
+                        <span>Image not found: images/IMG_2291.JPG</span>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <h3 class="text-6xl font-oswald font-bold text-[color:var(--swiss-red)] opacity-20 text-right">FOCUS</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: ACHIEVEMENTS -->
+    <div class="page relative bg-black">
+        <!-- Background Split -->
+        <div class="absolute left-0 top-0 w-1/3 h-full bg-[color:var(--swiss-red)] opacity-10"></div>
+        
+        <div class="p-12 h-full flex flex-col z-10 relative">
+            <h2 contenteditable="true" class="text-6xl font-bold uppercase mb-12 text-center text-white"><span class="text-[color:var(--swiss-red)]">Track</span> Record</h2>
+
+            <div class="flex flex-1 gap-10 items-center">
+                <!-- Image Section -->
+                <div class="w-5/12 h-[600px] relative shadow-2xl">
+                    <img src="images/eva860.jpg" alt="Champion Belt" class="w-full h-full object-cover border-4 border-white" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder w-full h-full hidden border-4 border-white">
+                        <i class="fas fa-trophy text-3xl mb-2"></i>
+                        <span>Image not found: images/eva860.jpg</span>
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -right-6 bg-[color:var(--swiss-red)] text-white p-6 shadow-lg">
+                        <p contenteditable="true" class="text-3xl font-bold font-oswald">15+ WINS</p>
+                        <p class="text-sm">ONLY 2 LOSSES</p>
+                    </div>
+                </div>
+
+                <!-- Text Section -->
+                <div class="w-7/12 pl-8">
+                    <p contenteditable="true" class="text-xl text-gray-400 mb-8 italic">
+                        "Already a decorated athlete at a young age, I have secured titles across multiple prestigious organizations."
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Achievement Items -->
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-medal text-[color:var(--swiss-red)] text-2xl mt-1"></i>
+                            <div>
+                                <h4 contenteditable="true" class="text-2xl font-bold uppercase">WAKO European Champion</h4>
+                                <p contenteditable="true" class="text-gray-400">Junior Division</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-medal text-[color:var(--swiss-red)] text-2xl mt-1"></i>
+                            <div>
+                                <h4 contenteditable="true" class="text-2xl font-bold uppercase">WAKO Swiss Champion</h4>
+                                <p contenteditable="true" class="text-gray-400">National Title Holder</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-trophy text-white text-2xl mt-1"></i>
+                            <div>
+                                <h4 contenteditable="true" class="text-xl font-bold">SCOS Swiss Champion</h4>
+                                <p contenteditable="true" class="text-gray-500">Multiple Gold Medals</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-trophy text-white text-2xl mt-1"></i>
+                            <div>
+                                <h4 contenteditable="true" class="text-xl font-bold">Hungarian World Cup</h4>
+                                <p contenteditable="true" class="text-gray-500">1st Place Gold Medalist</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-trophy text-white text-2xl mt-1"></i>
+                            <div>
+                                <h4 contenteditable="true" class="text-xl font-bold">Heroes Fight Night</h4>
+                                <p contenteditable="true" class="text-gray-500">2x Champion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: MISSION & BUDGET -->
+    <div class="page p-12 flex flex-col">
+        <div class="flex items-center gap-4 mb-8">
+            <div class="h-1 w-20 bg-[color:var(--swiss-red)]"></div>
+            <h2 contenteditable="true" class="text-4xl font-bold uppercase tracking-wide">The Mission</h2>
+        </div>
+
+        <!-- Top Half: Goals -->
+        <div class="flex gap-8 mb-12 h-1/2">
+             <div class="w-1/2 overflow-hidden relative">
+                <img src="images/6318a66f-7079-446a-b44a-3199e1eeac28.jpg" alt="Swiss Flag Ring" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="img-placeholder w-full h-full hidden">
+                    <i class="fas fa-flag text-3xl mb-2"></i>
+                    <span>Image not found: images/6318a...jpg</span>
+                </div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <h3 class="text-4xl font-oswald font-bold text-white border-b-4 border-[color:var(--swiss-red)] pb-2">ROAD TO GLORY</h3>
+                </div>
+            </div>
+
+            <div class="w-1/2 flex flex-col justify-between">
+                <div class="bg-gray-800 p-6 rounded-r-xl border-l-4 border-yellow-500">
+                    <h4 class="text-yellow-500 font-bold uppercase text-sm mb-1">Short Term</h4>
+                    <p contenteditable="true" class="text-sm">Dominate the upcoming national season and secure victory at the next Heroes Fight Night.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-r-xl border-l-4 border-blue-500">
+                    <h4 class="text-blue-500 font-bold uppercase text-sm mb-1">Mid Term</h4>
+                    <p contenteditable="true" class="text-sm">Represent Switzerland at the WAKO Junior European Championships and transition into adult rankings.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-r-xl border-l-4 border-[color:var(--swiss-red)]">
+                    <h4 class="text-[color:var(--swiss-red)] font-bold uppercase text-sm mb-1">Long Term</h4>
+                    <p contenteditable="true" class="text-sm">World Title Belt (Glory or ONE Championship) and World Games participation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Half: Budget -->
+        <div class="flex-1 bg-gray-900 p-8 rounded-xl relative overflow-hidden">
+            <h3 contenteditable="true" class="text-2xl font-bold mb-6 border-b border-gray-700 pb-2">Annual Season Budget: CHF 20,000</h3>
+            
+            <div class="flex gap-8 items-center">
+                <div class="w-1/3">
+                    <p contenteditable="true" class="text-gray-400 text-sm mb-4">
+                        To compete at the highest level, talent is not enough. International travel, training camps, equipment, and recovery costs add up.
+                    </p>
+                    <p contenteditable="true" class="text-white font-bold italic">
+                        "I cover what I can, but to reach the world stage, I need partners in my corner."
+                    </p>
+                </div>
+                
+                <!-- Simple CSS Bar Chart -->
+                <div class="w-2/3 space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs uppercase text-gray-500 mb-1">
+                            <span>Travel & Accommodation</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-4 rounded-full overflow-hidden">
+                            <div class="bg-[color:var(--swiss-red)] h-full w-[40%]"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs uppercase text-gray-500 mb-1">
+                            <span>Training & Camps</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-4 rounded-full overflow-hidden">
+                            <div class="bg-white h-full w-[30%]"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs uppercase text-gray-500 mb-1">
+                            <span>Equipment & Gear</span>
+                            <span>20%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-4 rounded-full overflow-hidden">
+                            <div class="bg-gray-400 h-full w-[20%]"></div>
+                        </div>
+                    </div>
+                     <div>
+                        <div class="flex justify-between text-xs uppercase text-gray-500 mb-1">
+                            <span>License & Fees</span>
+                            <span>10%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-4 rounded-full overflow-hidden">
+                            <div class="bg-gray-500 h-full w-[10%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: SPONSORSHIP -->
+    <div class="page bg-white text-black relative">
+        <!-- Vertical Image Strip -->
+        <div class="absolute right-0 top-0 w-1/3 h-full overflow-hidden">
+             <img src="images/eva812.jpg" alt="Punch" class="w-full h-full object-cover grayscale" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+             <div class="img-placeholder w-full h-full hidden bg-gray-200 text-black">
+                <i class="fas fa-fist-raised text-3xl mb-2"></i>
+                <span>Image not found: images/eva812.jpg</span>
+            </div>
+             <div class="absolute inset-0 bg-[color:var(--swiss-red)] mix-blend-multiply opacity-80"></div>
+        </div>
+
+        <div class="w-2/3 p-12 h-full flex flex-col">
+            <h2 contenteditable="true" class="text-6xl font-bold uppercase mb-4">Join the<br><span class="text-[color:var(--swiss-red)]">Team</span></h2>
+            <div class="w-24 h-2 bg-black mb-12"></div>
+
+            <div class="flex-1 space-y-8">
+                <!-- Tiers -->
+                <div class="border-b-2 border-gray-200 pb-6">
+                    <h3 class="text-2xl font-bold uppercase flex items-center gap-2">
+                        <i class="fas fa-handshake text-[color:var(--swiss-red)]"></i> Supporter
+                    </h3>
+                    <p class="text-sm font-bold text-gray-500 mb-2">CHF 500+</p>
+                    <ul contenteditable="true" class="list-disc list-inside text-gray-700 text-sm">
+                        <li>Social Media Shoutout</li>
+                        <li>Signed Autograph Card</li>
+                        <li>News Updates</li>
+                    </ul>
+                </div>
+
+                <div class="border-b-2 border-gray-200 pb-6">
+                    <h3 class="text-2xl font-bold uppercase flex items-center gap-2">
+                        <i class="fas fa-star text-[color:var(--swiss-red)]"></i> Partner
+                    </h3>
+                    <p class="text-sm font-bold text-gray-500 mb-2">CHF 1,000+</p>
+                    <ul contenteditable="true" class="list-disc list-inside text-gray-700 text-sm">
+                        <li>Logo on Training Gear</li>
+                        <li>Social Media Campaign (Stories & Posts)</li>
+                        <li>Website Feature</li>
+                    </ul>
+                </div>
+
+                <div class="pb-6">
+                    <h3 class="text-2xl font-bold uppercase flex items-center gap-2">
+                        <i class="fas fa-crown text-[color:var(--swiss-red)]"></i> Main Sponsor
+                    </h3>
+                    <p class="text-sm font-bold text-gray-500 mb-2">CHF 3,000+</p>
+                    <ul contenteditable="true" class="list-disc list-inside text-gray-700 text-sm">
+                        <li>Large Logo on Fight Shorts & Walkout Shirt</li>
+                        <li>Private Appearance / Corporate Event</li>
+                        <li>Exclusive Content Series</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Contact -->
+            <div class="bg-black text-white p-8 -ml-12 w-[120%] mt-auto relative z-10 shadow-2xl">
+                <h4 class="text-xl font-bold mb-4 uppercase text-[color:var(--swiss-red)]">Contact Management</h4>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <p contenteditable="true"><i class="fas fa-envelope w-6"></i> contact@evatschanz.ch</p>
+                    <p contenteditable="true"><i class="fas fa-phone w-6"></i> +41 79 123 45 67</p>
+                    <p contenteditable="true"><i class="fab fa-instagram w-6"></i> @eva.kickboxer</p>
+                    <p contenteditable="true"><i class="fas fa-university w-6"></i> IBAN: CHXX XXXX XXXX</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
