@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eva Tschanz | Swiss Kickboxing Champion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --color-black: #4a8583;
+            --color-dark: #6ba9a7;
+            --color-gray: #5a9896;
+            --color-light-gray: #8ec4c2;
+            --color-white: #ffffff;
+            --color-off-white: #f6e8d0;
+            --color-accent: #f6e8d0;
+            --color-accent-light: #faf3e8;
+            --color-accent-dark: #e8d9be;
+            --color-secondary: #D9D9D9;
+            --color-highlight: #f6e8d0;
+            --font-display: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== IMAGE EFFECTS ===== */
+        .profile-image img,
+        .column-image img {
+            transition: transform 0.5s ease;
+        }
+
+        .duotone-teal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Duotone teal grid layouts */
+        .duotone-teal-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .duotone-teal-grid.grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .duotone-teal-grid .duotone-teal {
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .duotone-teal-grid .duotone-teal img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .duotone-teal-grid.grid-2x2 .duotone-teal img {
+            height: 180px;
+        }
+
+        /* ===== BLENDING/FADING EDGES ===== */
+        .fade-right {
+            -webkit-mask-image: linear-gradient(to right, black 60%, transparent 100%);
+            mask-image: linear-gradient(to right, black 60%, transparent 100%);
+        }
+
+        .fade-left {
+            -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+            mask-image: linear-gradient(to left, black 60%, transparent 100%);
+        }
+
+        .fade-bottom {
+            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        }
+
+        .fade-top {
+            -webkit-mask-image: linear-gradient(to top, black 70%, transparent 100%);
+            mask-image: linear-gradient(to top, black 70%, transparent 100%);
+        }
+
+        .fade-edges {
+            -webkit-mask-image: radial-gradient(ellipse 80% 70% at center, black 50%, transparent 100%);
+            mask-image: radial-gradient(ellipse 80% 70% at center, black 50%, transparent 100%);
+        }
+
+        .fade-corner {
+            -webkit-mask-image: linear-gradient(135deg, black 50%, transparent 90%);
+            mask-image: linear-gradient(135deg, black 50%, transparent 90%);
+        }
+
+        /* No border radius for fading images */
+        .fade-right,
+        .fade-left,
+        .fade-bottom,
+        .fade-top,
+        .fade-edges,
+        .fade-corner {
+            border-radius: 0 !important;
+        }
+
+        .fade-right img,
+        .fade-left img,
+        .fade-bottom img,
+        .fade-top img,
+        .fade-edges img,
+        .fade-corner img {
+            border-radius: 0 !important;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            z-index: 1000;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav.active {
+            transform: translateX(0);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--color-white);
+            margin-bottom: 3rem;
+        }
+
+        .nav-logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-cta {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-white);
+            color: var(--color-black);
+        }
+
+        .nav-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            background: var(--color-gray);
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle:hover {
+            background: var(--color-accent);
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--color-black) 0%, rgba(107, 169, 167, 0.5) 50%, rgba(142, 196, 194, 0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 4rem;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-left: 3px solid var(--color-accent);
+            padding-left: 1rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 10rem);
+            line-height: 0.85;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            display: block;
+            color: var(--color-accent);
+            font-size: 0.5em;
+            margin-top: 0.2em;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--color-off-white);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            position: absolute;
+            right: 4rem;
+            bottom: 4rem;
+            display: flex;
+            gap: 3rem;
+            z-index: 1;
+        }
+
+        .stat {
+            text-align: right;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--color-highlight);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-white);
+            color: var(--color-black);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+            border-radius: 25px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-black);
+        }
+
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 6rem 5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+        }
+
+        /* ===== PROFILE SECTION ===== */
+        .profile {
+            background: var(--color-black);
+            padding: 8rem 4rem;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .profile-image {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .profile-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .profile-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            line-height: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header h2 span {
+            color: var(--color-accent);
+        }
+
+        .profile-header p {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-info-item {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.5rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-gray);
+        }
+
+        .profile-info-label {
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        .profile-info-label::after {
+            content: ':';
+        }
+
+        .profile-info-value {
+            color: var(--color-highlight);
+        }
+
+        /* ===== STORY SECTION ===== */
+        .story {
+            background: var(--color-dark);
+            padding: 8rem 4rem;
+        }
+
+        .story-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .story-text h2 span {
+            color: var(--color-accent);
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text .quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            border-left: 4px solid var(--color-highlight);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: var(--color-highlight);
+        }
+
+        .story-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .story-images img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .story-images img:first-child {
+            grid-column: span 2;
+            height: 300px;
+        }
+
+        /* ===== GOALS SECTION ===== */
+        .goals {
+            background: var(--color-black);
+            padding: 8rem 4rem;
+        }
+
+        .goals-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .goals-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .goals-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            line-height: 0.9;
+        }
+
+        .goals-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .goals-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .goals-text strong {
+            color: var(--color-accent);
+        }
+
+        /* ===== SPORT SECTION ===== */
+        .sport {
+            background: var(--color-dark);
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .sport-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .sport-info h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .sport-info h2 span {
+            color: var(--color-accent);
+        }
+
+        .sport-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .sport-info strong {
+            color: var(--color-accent);
+        }
+
+        .sport-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .sport-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .sport-gallery img:first-child {
+            grid-column: span 2;
+            height: 280px;
+        }
+
+        /* ===== BUDGET SECTION ===== */
+        .budget {
+            background: var(--color-black);
+            padding: 8rem 4rem;
+        }
+
+        .budget-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .budget-text {
+            margin-top: 2rem;
+        }
+
+        .budget-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .budget-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--color-accent);
+        }
+
+        .budget-text strong {
+            color: var(--color-highlight);
+        }
+
+        .budget-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .budget-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--color-gray);
+            font-size: 1.1rem;
+        }
+
+        .budget-total-text {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--color-accent);
+        }
+
+        .budget-text a {
+            color: var(--color-accent);
+        }
+
+        /* ===== ACHIEVEMENTS SECTION ===== */
+        .achievements {
+            background: var(--color-dark);
+            padding: 8rem 4rem;
+        }
+
+        .achievements-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .achievements-text {
+            margin-top: 2rem;
+        }
+
+        .achievements-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .achievements-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .achievements-list strong {
+            color: var(--color-highlight);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--color-accent);
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .contact-simple {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-text-content {
+            margin-top: 2rem;
+        }
+
+        .contact-text-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .contact-text-content a {
+            color: var(--color-black);
+            font-weight: 600;
+        }
+
+        .contact-text-content a:hover {
+            color: var(--color-white);
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            background: var(--color-dark);
+            padding: 4rem;
+        }
+
+        .content-section:nth-child(odd) {
+            background: var(--color-black);
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin: 0;
+            color: var(--color-accent);
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .content-section strong {
+            color: var(--color-accent);
+        }
+
+        .content-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--color-accent);
+        }
+
+        .content-section .quote {
+            font-style: italic;
+            border-left: 3px solid var(--color-highlight);
+            padding-left: 1rem;
+            color: var(--color-highlight);
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-section ul li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--color-gray);
+        }
+
+        .content-section a {
+            color: var(--color-accent);
+        }
+
+        /* Two Column Layout */
+        .section-container-wide {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .two-column.reverse {
+            direction: rtl;
+        }
+
+        .two-column.reverse > * {
+            direction: ltr;
+        }
+
+        .column-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .column-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .column-images img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .column-images.grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .column-images.grid-2x2 img {
+            height: 180px;
+        }
+
+        .column-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 900px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .two-column.reverse {
+                direction: ltr;
+            }
+
+            .column-image img {
+                height: 350px;
+            }
+
+            .column-images.grid-2x2 img {
+                height: 140px;
+            }
+
+            .duotone-teal-grid.grid-2x2 .duotone-teal img {
+                height: 140px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--color-dark);
+            padding: 2rem 5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--color-accent);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: none;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+        }
+
+        .print-btn:hover {
+            background: var(--color-white);
+            color: var(--color-black);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .hero-stats {
+                position: static;
+                margin-top: 2rem;
+                justify-content: flex-start;
+            }
+
+            .hero-title {
+                font-size: clamp(3rem, 10vw, 6rem);
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .profile-image {
+                position: static;
+            }
+
+            .profile-image img {
+                height: 400px;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+
+            .sport-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                width: 260px;
+                padding: 1.5rem;
+            }
+
+            .nav-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 10px;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat {
+                text-align: left;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .profile-header h2 {
+                font-size: 2rem;
+            }
+
+            .story-text h2 {
+                font-size: 2rem;
+            }
+
+            .story-images {
+                grid-template-columns: 1fr;
+            }
+
+            .story-images img:first-child {
+                grid-column: span 1;
+            }
+
+            .goals-header h2 {
+                font-size: 2rem;
+            }
+
+            .sport-info h2 {
+                font-size: 2rem;
+            }
+
+            .sport-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .sport-gallery img:first-child {
+                grid-column: span 1;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: white !important;
+                color: #1a1a1a !important;
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            .nav,
+            .print-btn,
+            .gallery,
+            .contact-social,
+            .btn,
+            .nav-toggle {
+                display: none !important;
+            }
+
+            section {
+                padding: 20pt 0 !important;
+                page-break-inside: avoid;
+            }
+
+            /* Print Hero */
+            .hero {
+                display: block !important;
+                min-height: auto !important;
+                page-break-after: always;
+            }
+
+            .hero-content {
+                padding: 0 !important;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 60%;
+                margin: 0 auto 20pt;
+                height: auto !important;
+            }
+
+            .hero-image img {
+                height: auto !important;
+                max-height: 300pt;
+                object-fit: contain;
+            }
+
+            .hero-image::after {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 36pt !important;
+                color: #6ba9a7 !important;
+            }
+
+            .hero-title span {
+                color: #4a8583 !important;
+            }
+
+            .hero-subtitle {
+                color: #6ba9a7 !important;
+            }
+
+            .hero-description {
+                color: #333 !important;
+                max-width: none;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                margin-bottom: 0;
+            }
+
+            .stat-number {
+                color: #4a8583 !important;
+            }
+
+            .section-label {
+                color: #6ba9a7 !important;
+            }
+
+            .hero-buttons {
+                display: none !important;
+            }
+
+            /* Print About */
+            .about {
+                background: white !important;
+                page-break-after: always;
+            }
+
+            .about-grid {
+                display: block !important;
+            }
+
+            .about-images {
+                display: flex !important;
+                gap: 10pt;
+                margin-bottom: 20pt;
+            }
+
+            .about-images img {
+                width: 32% !important;
+                height: 150pt !important;
+                object-fit: cover;
+            }
+
+            .about-images img:first-child {
+                grid-column: auto !important;
+                height: 150pt !important;
+            }
+
+            .about-content h3 {
+                color: #6ba9a7 !important;
+                font-size: 24pt;
+            }
+
+            .about-content p {
+                color: #333 !important;
+            }
+
+            .about-highlights {
+                display: flex !important;
+                flex-wrap: wrap;
+                gap: 15pt;
+            }
+
+            .highlight {
+                width: 45%;
+            }
+
+            .highlight-icon {
+                background: #6ba9a7 !important;
+                color: white !important;
+                width: 30pt;
+                height: 30pt;
+                font-size: 12pt;
+            }
+
+            /* Print Achievements */
+            .achievements {
+                background: white !important;
+                page-break-after: always;
+            }
+
+            .achievements::before {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 28pt;
+                color: #1a1a1a !important;
+            }
+
+            .achievements-grid {
+                display: flex !important;
+                flex-wrap: wrap;
+                gap: 15pt;
+            }
+
+            .achievement-card {
+                background: #f5f5f5 !important;
+                width: 30%;
+                padding: 15pt;
+            }
+
+            .achievement-card::before {
+                background: #6ba9a7 !important;
+            }
+
+            .achievement-year {
+                color: #6ba9a7 !important;
+                font-size: 24pt;
+            }
+
+            .achievement-title {
+                color: #1a1a1a !important;
+            }
+
+            .achievement-description {
+                color: #666 !important;
+            }
+
+            /* Print Sponsorship */
+            .sponsorship {
+                background: white !important;
+                page-break-before: always;
+            }
+
+            .sponsorship-intro p {
+                color: #333 !important;
+            }
+
+            .sponsorship-grid {
+                display: flex !important;
+                gap: 15pt;
+            }
+
+            .sponsor-tier {
+                background: #f5f5f5 !important;
+                flex: 1;
+                padding: 20pt 15pt;
+                transform: none !important;
+            }
+
+            .sponsor-tier.featured {
+                background: #6ba9a7 !important;
+                color: white !important;
+            }
+
+            .tier-name {
+                font-size: 18pt;
+            }
+
+            .tier-benefits li {
+                border-color: rgba(0,0,0,0.1) !important;
+                font-size: 10pt;
+            }
+
+            .sponsor-tier.featured .tier-benefits li {
+                border-color: rgba(255,255,255,0.2) !important;
+            }
+
+            /* Print Why Sponsor */
+            .why-sponsor {
+                background: white !important;
+                page-break-before: always;
+            }
+
+            .why-grid {
+                display: block !important;
+            }
+
+            .why-image {
+                float: right;
+                width: 40%;
+                margin-left: 20pt;
+            }
+
+            .why-image img {
+                height: auto !important;
+                max-height: 300pt;
+            }
+
+            .why-content h3 {
+                color: #6ba9a7 !important;
+                font-size: 24pt;
+            }
+
+            .why-list li {
+                border-color: #ddd !important;
+            }
+
+            .why-number {
+                color: #4a8583 !important;
+            }
+
+            .why-text h4 {
+                color: #1a1a1a !important;
+            }
+
+            .why-text p {
+                color: #666 !important;
+            }
+
+            /* Print Contact */
+            .contact {
+                background: white !important;
+                page-break-before: always;
+            }
+
+            .contact-title {
+                color: #1a1a1a !important;
+                font-size: 36pt;
+            }
+
+            .contact-title span {
+                color: #4a8583 !important;
+            }
+
+            .contact-text {
+                color: #333 !important;
+            }
+
+            .contact-email {
+                color: #6ba9a7 !important;
+                font-size: 18pt;
+            }
+
+            .footer {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Toggle Button -->
+    <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Navigation Sidebar -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">EVA <span>TSCHANZ-EICHAR</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#sport">Sport</a></li>
+            <li><a href="#budget">Budget</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#budget" class="nav-cta">Become a Sponsor</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <img src="../images/eva860.jpg" alt="Eva Tschanz - Swiss Kickboxing Champion">
+        </div>
+        <div class="hero-content">
+            <span class="hero-subtitle">Swiss National Team Athlete</span>
+            <h1 class="hero-title">
+                EVA
+                <span>TSCHANZ-EICHAR</span>
+            </h1>
+            <p class="hero-description">
+                Elite kickboxer representing Switzerland on the world stage.
+                Champion, athlete, and ambassador for the sport.
+            </p>
+            <div class="hero-buttons">
+                <a href="#budget" class="btn btn-primary">Partner With Me</a>
+                <a href="#profile" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Championships</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Victories</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Years Pro</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="content-section" id="profile">
+        <div class="section-container-wide">
+            <div class="section-header">
+                <h2>Profile</h2>
+            </div>
+            <div class="two-column">
+                <div class="column-image fade-right">
+                    <img src="../images/eva939.jpg" alt="Eva Lina Tschanz-Eichar">
+                </div>
+                <div class="column-content">
+                    <div class="profile-info">
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Full Name</span>
+                            <span class="profile-info-value">Eva Lina Tschanz-Eichar</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Birthdate</span>
+                            <span class="profile-info-value">27.06.2008</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Location</span>
+                            <span class="profile-info-value">Bern, Switzerland</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Nationality</span>
+                            <span class="profile-info-value">Swiss & Canadian</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Education</span>
+                            <span class="profile-info-value">Sportgymnasium Neufeld</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Gym</span>
+                            <span class="profile-info-value">Fusion Sports Academy</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Languages</span>
+                            <span class="profile-info-value">English, German, French, Portuguese</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-label">Status</span>
+                            <span class="profile-info-value">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="content-section" id="story">
+        <div class="section-container-wide">
+            <div class="section-header">
+                <h2>My Story</h2>
+            </div>
+            <div class="two-column reverse">
+                <div class="column-content">
+                    <p>My journey into kickboxing began at a young age, driven by a desire to challenge myself both physically and mentally. What started as a way to build confidence quickly became a passion that would define my life.</p>
+                    <p class="quote">"Every champion was once a contender who refused to give up."</p>
+                    <p>Through years of dedicated training, countless early mornings, and unwavering commitment, I've risen through the ranks to represent Switzerland on the international stage. My journey has taught me that success isn't just about talent—it's about persistence, discipline, and the courage to keep fighting even when the odds seem against you.</p>
+                </div>
+                <div class="column-image fade-left">
+                    <img src="../images/eva966.jpg" alt="Eva training" style="height: 450px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="content-section" id="goals">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>My Goals</h2>
+            </div>
+            <p>My ultimate goal is to win a <strong>World Championship</strong> title, representing Switzerland at the highest level of competition and proving that dedication and hard work pay off.</p>
+            <p>I aim to secure an <strong>European Championship</strong> medal and establish myself among the elite fighters on the continent.</p>
+            <p>I want to climb the international rankings to be recognized among the <strong>Top 5 fighters</strong> in my weight class globally.</p>
+            <p>Beyond competition, I want to use my platform to <strong>inspire young athletes</strong>, especially women, to pursue their dreams in combat sports.</p>
+            <p>I'm also committed to helping <strong>grow kickboxing</strong> in Switzerland and increase its visibility and popularity nationwide.</p>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="content-section" id="achievements">
+        <div class="section-container-wide">
+            <div class="section-header">
+                <h2>Achievements & Titles</h2>
+            </div>
+            <div class="two-column">
+                <div class="column-content">
+                    <p>A journey of dedication, discipline, and determination. Each title represents countless hours of training and unwavering commitment to excellence.</p>
+                    <ul class="achievements-list">
+                        <li><strong>2024</strong> - National Champion: Swiss Kickboxing Championship title holder - the culmination of years of dedication and training at the highest level.</li>
+                        <li><strong>2023</strong> - European Championship: Medal winner at European Championships</li>
+                        <li><strong>2023</strong> - World Championship: Represented Switzerland at World Championships</li>
+                        <li><strong>2022</strong> - National Team Selection: Selected for Swiss National Kickboxing Team</li>
+                        <li><strong>2021</strong> - Regional Champion: Dominant performance in regional circuit</li>
+                    </ul>
+                </div>
+                <div class="column-image fade-left">
+                    <img src="../images/IMG_2298.JPG" alt="Eva with championship medal" style="height: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sport Section -->
+    <section class="content-section" id="sport">
+        <div class="section-container-wide">
+            <div class="section-header">
+                <h2>The Sport</h2>
+            </div>
+            <div class="two-column">
+                <div class="column-images grid-2x2 duotone-teal-grid">
+                    <div class="duotone-teal"><img src="../images/eva850.jpg" alt="Eva in competition"></div>
+                    <div class="duotone-teal fade-right"><img src="../images/eva812.jpg" alt="Eva training"></div>
+                    <div class="duotone-teal"><img src="../images/eva814.jpg" alt="Eva fighting"></div>
+                    <div class="duotone-teal"><img src="../images/eva951.jpg" alt="Eva kick"></div>
+                </div>
+                <div class="column-content">
+                    <p>Kickboxing is a dynamic combat sport that combines elements of boxing, karate, and Muay Thai. It requires exceptional physical conditioning, technical precision, and mental fortitude.</p>
+                    <p>As a competitive kickboxer, I train in multiple disciplines to develop a well-rounded skill set that allows me to compete at the highest international level.</p>
+                    <p>I compete in <strong>Point Fighting</strong> for speed and precision, <strong>Full Contact</strong> for power and endurance, <strong>K-1 Rules</strong> for all-round combat, and <strong>WAKO Events</strong> at World Championships level.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section class="content-section" id="budget">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Annual Budget</h2>
+            </div>
+            <p>Transparent breakdown of what it takes to compete at the elite level:</p>
+            <h3>Annual Expenses</h3>
+            <ul class="budget-list">
+                <li>Competition Entry Fees: <strong>CHF 3,000</strong></li>
+                <li>Travel & Accommodation: <strong>CHF 8,000</strong></li>
+                <li>Training & Coaching: <strong>CHF 6,000</strong></li>
+                <li>Equipment & Gear: <strong>CHF 2,500</strong></li>
+                <li>Nutrition & Supplements: <strong>CHF 3,000</strong></li>
+                <li>Medical & Recovery: <strong>CHF 2,500</strong></li>
+            </ul>
+            <p class="budget-total-text"><strong>Total Annual Budget: CHF 25,000</strong></p>
+            <h3>Sponsor Benefits</h3>
+            <p>As a sponsor, you will receive <strong>international visibility</strong> with your brand at European and World Championships, <strong>media coverage</strong> with logo placement on competition attire and promotional materials, <strong>social media presence</strong> with regular features across all platforms, <strong>personal partnership</strong> opportunities including direct collaboration and brand ambassador roles, and association with <strong>Swiss excellence</strong> and championship values.</p>
+            <p>Flexible sponsorship packages are available to match your goals and budget. <a href="#contact">Get in touch</a> to discuss opportunities.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="content-section" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Contact</h2>
+            </div>
+            <p>Interested in sponsorship opportunities or collaborations? I'd love to hear from you and discuss how we can work together.</p>
+            <p>Email: <a href="mailto:contact@evatschanz.ch"><strong>contact@evatschanz.ch</strong></a></p>
+            <p>Follow my journey on Instagram, Facebook, YouTube, and LinkedIn.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">EVA <span>TSCHANZ-EICHAR</span></div>
+        <div class="footer-text">&copy; 2024 Eva Tschanz-Eichar. All Rights Reserved.</div>
+    </footer>
+
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()">
+        <span>&#128424;</span> Print Portfolio
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Navigation sidebar toggle
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function openNav() {
+            nav.classList.add('active');
+            navToggle.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNav() {
+            nav.classList.remove('active');
+            navToggle.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        navToggle.addEventListener('click', () => {
+            if (nav.classList.contains('active')) {
+                closeNav();
+            } else {
+                openNav();
+            }
+        });
+
+        // Close nav when clicking overlay
+        navOverlay.addEventListener('click', closeNav);
+
+        // Close nav when clicking a link
+        document.querySelectorAll('.nav-links a, .nav-cta').forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+    </script>
+</body>
+</html>
