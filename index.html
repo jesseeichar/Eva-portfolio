@@ -408,7 +408,7 @@
 
         /* Achievements Section */
         .achievements {
-            padding: 8rem 0;
+            padding: 6rem 0;
             background: var(--dark);
             position: relative;
             overflow: hidden;
@@ -416,78 +416,188 @@
 
         .achievements-header {
             text-align: center;
-            padding: 0 6rem;
-            margin-bottom: 5rem;
+            padding: 0 2rem;
+            margin-bottom: 3rem;
         }
 
         .achievements-title {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
         }
 
-        .belt-showcase {
+        .achievements-carousel {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .achievements-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .achievement-card {
+            flex: 0 0 380px;
+            min-height: 320px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--gray-dark);
+            padding: 2rem;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .achievement-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: var(--red);
+            transform: translateY(-5px);
+        }
+
+        .achievement-card .card-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--red);
+            margin-bottom: 0.75rem;
+        }
+
+        .achievement-card .card-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-card .card-location {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-card .card-result {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--red);
+            margin-bottom: 0.75rem;
+        }
+
+        .achievement-card .card-preview {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .achievement-card .card-preview strong {
+            color: var(--white);
+        }
+
+        .achievement-card .card-expand {
+            font-size: 0.75rem;
+            color: var(--red);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Modal for expanded card */
+        .achievement-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4rem;
-            padding: 4rem 6rem;
-            position: relative;
-        }
-
-        .belt-image {
-            flex: 0 0 45%;
-            position: relative;
-        }
-
-        .belt-image img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-        }
-
-        .belt-image::after {
-            content: '';
-            position: absolute;
-            inset: 2rem;
-            border: 2px solid var(--red);
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        .achievements-list {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .achievement-item {
             padding: 2rem;
-            background: rgba(255,255,255,0.02);
-            border-left: 3px solid var(--red);
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
         }
 
-        .achievement-item:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(10px);
+        .achievement-modal.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .achievement-year {
+        .modal-content {
+            background: var(--dark);
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            position: relative;
+            border: 1px solid var(--red);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--red);
+        }
+
+        .modal-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
             font-family: 'Anton', sans-serif;
             font-size: 2rem;
-            color: var(--red);
             margin-bottom: 0.5rem;
         }
 
-        .achievement-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .achievement-desc {
-            font-size: 0.9rem;
+        .modal-location {
+            font-size: 1rem;
             color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-result {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            white-space: pre-line;
+        }
+
+        .modal-quote {
+            font-style: italic;
+            border-left: 3px solid var(--red);
+            padding-left: 1.5rem;
+            margin-top: 1.5rem;
+            color: var(--white);
         }
 
         /* Gallery Section */
@@ -1844,34 +1954,74 @@
             <p class="section-label">Career Highlights</p>
             <h2 class="achievements-title">Achievements</h2>
         </div>
-        <div class="belt-showcase">
-            <div class="belt-image reveal">
-                <img src="images/web/eva850.jpg" alt="Eva Tschanz with championship belt">
+        <div class="achievements-carousel reveal">
+            <!-- European Championships -->
+            <div class="achievement-card" data-category="European Championships" data-title="European Championships" data-location="Jesolo, Italy" data-result="3 Fights, 3 Wins - Gold Medal" data-description="9 competitors in category. Dominated every fight to claim the title." data-quote="I prepared all summer for this competition. I didn't go on holidays, I stayed home and trained multiple times a day. Focused a lot on my nutrition and health, gave my all, and ended up winning.">
+                <div class="card-category">European Championships</div>
+                <div class="card-title">European Championships</div>
+                <div class="card-location">Jesolo, Italy</div>
+                <div class="card-result">3 Fights, 3 Wins - Gold Medal</div>
+                <div class="card-preview">9 competitors in category. Dominated every fight to claim the European title after intense summer preparation.</div>
+                <div class="card-expand">Click to read more →</div>
             </div>
-            <div class="achievements-list reveal">
-                <div class="achievement-item">
-                    <div class="achievement-year">2024</div>
-                    <div class="achievement-title">Championship Title</div>
-                    <div class="achievement-desc">Claimed championship belt in competitive kickboxing division</div>
+
+            <!-- European Cup Sarajevo -->
+            <div class="achievement-card" data-category="International Cup" data-title="European Cup (Grand Prix)" data-location="Sarajevo" data-result="First International Gold Medal" data-description="Tough fights throughout the tournament, but secured the first gold medal in international competition. A breakthrough moment in the career.">
+                <div class="card-category">International Cup</div>
+                <div class="card-title">European Cup (Grand Prix)</div>
+                <div class="card-location">Sarajevo</div>
+                <div class="card-result">First International Gold Medal</div>
+                <div class="card-preview">Tough fights throughout the tournament, but secured the first gold medal in international competition. A breakthrough moment.</div>
+                <div class="card-expand">Click to read more →</div>
+            </div>
+
+            <!-- World Cups Combined -->
+            <div class="achievement-card" data-category="International World Cups" data-title="World Cup Competitions" data-location="Hungary, Turkey, Italy" data-result="Multiple Victories & Valuable Experience" data-description="World Cup Hungary (Budapest): Dominant win against a skilled opponent.
+
+World Cup Turkey (Antalya): Won first fight by TKO. Lost second fight against the same opponent from Italy - a world champion and European champion who rarely loses. This loss ignited more fire to work harder. Goal: win against her in 2026.
+
+World Cup Jesolo (Italy): Lost first fight, but this setback provided crucial motivation to train harder and improve. Every loss is a lesson that drives progress.">
+                <div class="card-category">International World Cups</div>
+                <div class="card-title">World Cup Competitions</div>
+                <div class="card-location">Hungary • Turkey • Italy</div>
+                <div class="card-result">Multiple Victories & Growth</div>
+                <div class="card-preview">
+                    <strong>Budapest:</strong> Dominant win<br>
+                    <strong>Antalya:</strong> TKO victory, faced world champion<br>
+                    <strong>Jesolo:</strong> Learning experience - fuel for improvement
                 </div>
-                <div class="achievement-item">
-                    <div class="achievement-year">2024</div>
-                    <div class="achievement-title">Swiss National Team</div>
-                    <div class="achievement-desc">Selected to represent Switzerland at WAKO international competitions</div>
+                <div class="card-expand">Click to read more →</div>
+            </div>
+
+            <!-- Swiss Championships Combined -->
+            <div class="achievement-card" data-category="Swiss Championships" data-title="Swiss Championships" data-location="Switzerland" data-result="National Champion (WAKO & SCOS)" data-description="WAKO Championships: Dominated the competition at the Swiss WAKO Championships, showcasing superior technique and conditioning.
+
+SCOS Championships: After a full year of qualifications, won most of them to qualify for the finals. Secured a clear victory in the championship finals.">
+                <div class="card-category">Swiss Championships</div>
+                <div class="card-title">Swiss Championships</div>
+                <div class="card-location">Switzerland</div>
+                <div class="card-result">National Champion (WAKO & SCOS)</div>
+                <div class="card-preview">
+                    <strong>WAKO:</strong> Dominant win at national level<br>
+                    <strong>SCOS:</strong> After a year of qualifications, won most of them and secured a clear victory in the finals
                 </div>
-                <div class="achievement-item">
-                    <div class="achievement-year">2024</div>
-                    <div class="achievement-title">International Competition</div>
-                    <div class="achievement-desc">Competed at WAKO World Championships representing Switzerland</div>
-                </div>
-                <div class="achievement-item">
-                    <div class="achievement-year">Ongoing</div>
-                    <div class="achievement-title">Venum Athlete</div>
-                    <div class="achievement-desc">Partnered with premium combat sports brand Venum</div>
-                </div>
+                <div class="card-expand">Click to read more →</div>
             </div>
         </div>
     </section>
+
+    <!-- Achievement Modal -->
+    <div class="achievement-modal" id="achievementModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-category" id="modalCategory"></div>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <div class="modal-location" id="modalLocation"></div>
+            <div class="modal-result" id="modalResult"></div>
+            <div class="modal-description" id="modalDescription"></div>
+            <div class="modal-quote" id="modalQuote"></div>
+        </div>
+    </div>
 
     <!-- Gallery Section -->
     <section class="gallery" id="gallery">
@@ -2063,6 +2213,58 @@
         window.printPortfolio = () => {
             window.print();
         };
+
+        // Achievement Modal functionality
+        const achievementModal = document.getElementById('achievementModal');
+        const modalClose = document.getElementById('modalClose');
+        const achievementCards = document.querySelectorAll('.achievement-card');
+
+        achievementCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.dataset.category;
+                const title = card.dataset.title;
+                const location = card.dataset.location;
+                const result = card.dataset.result;
+                const description = card.dataset.description;
+                const quote = card.dataset.quote;
+
+                document.getElementById('modalCategory').textContent = category;
+                document.getElementById('modalTitle').textContent = title;
+                document.getElementById('modalLocation').textContent = location;
+                document.getElementById('modalResult').textContent = result;
+                document.getElementById('modalDescription').textContent = description;
+
+                const quoteEl = document.getElementById('modalQuote');
+                if (quote) {
+                    quoteEl.textContent = '"' + quote + '"';
+                    quoteEl.style.display = 'block';
+                } else {
+                    quoteEl.style.display = 'none';
+                }
+
+                achievementModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            achievementModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        achievementModal.addEventListener('click', (e) => {
+            if (e.target === achievementModal) {
+                achievementModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && achievementModal.classList.contains('active')) {
+                achievementModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
     </script>
 </body>
 </html>
