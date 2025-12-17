@@ -28,7 +28,7 @@ mkdir -p "$WEB_DIR"
 echo "Creating web-optimized images..."
 echo ""
 
-for img in "${IMAGES[@]}"; do
+for img in *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.gif *.GIF; do
     if [ -f "$img" ]; then
         # Get base name (convert to lowercase for consistency)
         base=$(basename "$img")
