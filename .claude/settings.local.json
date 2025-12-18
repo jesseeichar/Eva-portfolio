@@ -4,7 +4,8 @@
       "Bash(dir \"c:\\Users\\etsch\\claude\\website\\images\" /b)",
       "Bash(dir:*)",
       "Bash(powershell -ExecutionPolicy Bypass -File make_thumbnails.ps1:*)",
-      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\Users\\etsch\\claude\\website\\images\\make_thumbnails.ps1\")"
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\Users\\etsch\\claude\\website\\images\\make_thumbnails.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\\\Users\\\\etsch\\\\claude\\\\website\\\\images\\\\optimize_for_web.ps1\")"
     ]
   }
 }
