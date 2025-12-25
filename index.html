@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #0a0a0a;
-            --dark: #141414;
-            --red: #e63946;
-            --red-dark: #c1121f;
-            --white: #ffffff;
-            --gray: #a0a0a0;
-            --gray-dark: #2a2a2a;
+            --black: #c8c4bc;
+            --dark: #c8c4bc;
+            --red: #d65a31;
+            --red-dark: #c14a25;
+            --white: #d65a31;
+            --gray: #d65a31;
+            --gray-dark: #b8b4ac;
         }
 
         * {
@@ -204,7 +204,7 @@
         .hero {
             min-height: 100vh;
             display: grid;
-            grid-template-columns: 1fr 1.4fr;
+            grid-template-columns: 5vw 1fr 1.4fr;
             position: relative;
             overflow: hidden;
         }
@@ -213,9 +213,14 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8rem 2rem 8rem 18rem;
+            padding: 10rem;
             position: relative;
             z-index: 2;
+            grid-column: 2;
+        }
+
+        .hero-image {
+            grid-column: 3;
         }
 
         .hero-subtitle {
@@ -360,7 +365,7 @@
 
         /* Alternate Section Variant (slightly lighter dark) */
         .section-alt {
-            background: #181818;
+            background: var(--black);
         }
 
         /* Content Section (for standalone text sections) */
@@ -1370,6 +1375,126 @@
             object-fit: cover;
         }
 
+        /* Budget Section */
+        .budget {
+            padding: 10rem 6rem;
+            background: var(--black);
+        }
+
+        .budget-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .budget-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .budget-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .budget-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .budget-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--gray-dark);
+        }
+
+        .budget-item:first-child {
+            border-top: 1px solid var(--gray-dark);
+        }
+
+        .budget-item-info h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            color: var(--white);
+        }
+
+        .budget-item-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .budget-item-amount {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .budget-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-top: 1rem;
+            border-top: 2px solid var(--red);
+        }
+
+        .budget-total h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .budget-total-amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .budget-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .budget-summary h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .budget-summary p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .budget-cta {
+            display: inline-block;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .budget-cta:hover {
+            color: var(--red);
+        }
+
         /* Contact Section */
         .contact {
             padding: 10rem 6rem;
@@ -2002,6 +2127,15 @@
             .contact-info {
                 grid-template-columns: 1fr;
             }
+
+            .budget {
+                padding: 6rem 3rem;
+            }
+
+            .budget-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
         }
 
         /* Responsive - Mobile */
@@ -2446,6 +2580,48 @@
                 max-width: 250px;
             }
 
+            /* Budget Mobile */
+            .budget {
+                padding: 4rem 1.25rem;
+            }
+
+            .budget-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .budget-header h2 {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
+            }
+
+            .budget-header p {
+                font-size: 1rem;
+            }
+
+            .budget-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .budget-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .budget-item-amount {
+                font-size: 1.1rem;
+            }
+
+            .budget-total {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .budget-summary h3 {
+                font-size: 1.3rem;
+            }
+
             /* Contact Mobile */
             .contact {
                 padding: 4rem 1.25rem;
@@ -2609,10 +2785,12 @@
         </div>
         <ul class="nav-links">
             <li><a href="#about">Tough Cookie</a></li>
-            <li><a href="#education">Education</a></li>
+            <li><a href="#values">Values</a></li>
             <li><a href="#kickboxing">Kickboxing</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#journey">My Journey</a></li>
             <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#budget">Budget</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#sponsorship">Sponsor Info</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -2629,10 +2807,12 @@
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="sidebar-nav" id="sidebarNav">
         <a href="#about">Tough Cookie</a>
-        <a href="#education">Education</a>
+        <a href="#values">Values</a>
         <a href="#kickboxing">Kickboxing</a>
+        <a href="#education">Education</a>
         <a href="#journey">My Journey</a>
         <a href="#achievements">Achievements</a>
+        <a href="#budget">Budget</a>
         <a href="#gallery">Gallery</a>
         <a href="#sponsorship">Sponsor Info</a>
         <a href="#contact">Contact</a>
@@ -2980,6 +3160,63 @@ SCOS Championships: After a full year of qualifications, won most of them to qua
         </div>
     </div>
 
+    <!-- Budget Section -->
+    <section class="budget" id="budget">
+        <div class="budget-header reveal">
+            <h2>Investment Breakdown</h2>
+            <p>A transparent look at what it takes to compete at the highest level of kickboxing</p>
+        </div>
+        <div class="budget-content">
+            <div class="budget-items reveal">
+                <div class="budget-item">
+                    <div class="budget-item-info">
+                        <h3>Training & Coaching</h3>
+                        <p>Professional coaching, gym memberships, sparring sessions</p>
+                    </div>
+                    <div class="budget-item-amount">CHF 8,000</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-item-info">
+                        <h3>Competition & Travel</h3>
+                        <p>Entry fees, flights, accommodation for international events</p>
+                    </div>
+                    <div class="budget-item-amount">CHF 12,000</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-item-info">
+                        <h3>Equipment & Gear</h3>
+                        <p>Gloves, protective gear, training equipment, competition attire</p>
+                    </div>
+                    <div class="budget-item-amount">CHF 3,000</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-item-info">
+                        <h3>Nutrition & Recovery</h3>
+                        <p>Supplements, meal planning, physiotherapy, sports massage</p>
+                    </div>
+                    <div class="budget-item-amount">CHF 5,000</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-item-info">
+                        <h3>Training Camps</h3>
+                        <p>Intensive preparation camps with elite coaches abroad</p>
+                    </div>
+                    <div class="budget-item-amount">CHF 4,000</div>
+                </div>
+                <div class="budget-total">
+                    <h3>Annual Investment</h3>
+                    <div class="budget-total-amount">CHF 32,000</div>
+                </div>
+            </div>
+            <div class="budget-summary reveal">
+                <h3>Where Your Support Goes</h3>
+                <p>Every franc invested goes directly into training, competition, and development. As an amateur athlete, I balance my athletic career with studies and work, dedicating every available resource to reaching the top of my sport.</p>
+                <p>Your sponsorship helps cover these essential costs, allowing me to focus on what matters most: becoming the best kickboxer I can be and representing Switzerland on the world stage.</p>
+                <a href="#contact" class="budget-cta">→ Discuss Sponsorship</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
     <section class="gallery section-alt" id="gallery">
         <div class="gallery-header reveal">
@@ -3092,8 +3329,16 @@ SCOS Championships: After a full year of qualifications, won most of them to qua
         <div class="footer-logo">Eva Tschanz-Eichar</div>
         <div class="footer-text">Swiss Kickboxing Champion</div>
         <div class="footer-social">
-            <a href="https://instagram.com/evalinatschanz" target="_blank" aria-label="Instagram">IG</a>
-            <a href="https://tiktok.com/@evalinatschanz" target="_blank" aria-label="TikTok">TT</a>
+            <a href="https://instagram.com/evalinatschanz" target="_blank" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://tiktok.com/@evalinatschanz" target="_blank" aria-label="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+            </a>
         </div>
     </footer>
 
